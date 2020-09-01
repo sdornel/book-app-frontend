@@ -15,23 +15,21 @@
 //     dispatch(calledBackendAPI(body))
 // };
 
-function fetchingBackendAPI(){
-    console.log("calling")
+function fetchingUsers(){
     return async (dispatch) => {
-        debugger
-        const response = await fetch('http://localhost:3000/express_backend');
+        const response = await fetch('http://localhost:3000/api/users');
         const body = await response.json();
-
         if (response.status !== 200) {
         throw Error(body.message) 
         }
-        // return body;
-        dispatch(fetchedBackendAPI(body))
+        dispatch(fetchedUsers(body))
     }
 }
 
-function fetchedBackendAPI(body){
-    return {type: "CALLED_BACKEND_API", payload: body}
+function fetchedUsers(body){
+    return {type: "FETCHED_USERS", payload: body}
 }
 
-export { fetchingBackendAPI }
+// do fetch request from backend to double check everything works
+
+export { fetchingUsers }

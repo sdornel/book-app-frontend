@@ -1,20 +1,15 @@
 import React from 'react';
 import {connect} from 'react-redux'
 import { Route, Switch, withRouter } from "react-router-dom";
-import { fetchingBackendAPI } from './redux/actions'
+import { fetchingUsers } from './redux/actions'
 import BooksContainer from './books/BooksContainer'
 import './App.css';
 
-class App extends React.Component { // client
-  // constructor(){
-  //   super()
-  //   this.state = {
-  //     data: null
-  //   }
-  // }
+class App extends React.Component { 
+
 
   componentDidMount(){
-    this.props.fetchingBackendAPI()
+    this.props.fetchingUsers()
   }
 
   render() {
@@ -29,8 +24,15 @@ class App extends React.Component { // client
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    fetchingBackendAPI: () => {dispatch( fetchingBackendAPI() )},
+    fetchingUsers: () => {dispatch( fetchingUsers() )},
   }
 }
 
-export default withRouter(connect(null, mapDispatchToProps)(App));
+const mapStateToProps = (state) => {
+  console.log(state.users)
+  return {
+      users: state.users
+  };
+};
+
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(App));

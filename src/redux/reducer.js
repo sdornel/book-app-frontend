@@ -1,17 +1,16 @@
 import { combineReducers } from "redux";
 
-const backendAPIReducer = (state = [], action) => {
+const userReducer = (state = [], action) => {
   switch (action.type) {
-      case "CALLED_BACKEND_API":
-        debugger
-          return action.payload
+      case "FETCHED_USERS":
+        return action.payload.users
       default:
-          return state;
+        return state;
   }
 }
 
 const rootReducer = combineReducers({
-  backendAPI: backendAPIReducer,
+  users: userReducer,
 });
   
   export default rootReducer;
