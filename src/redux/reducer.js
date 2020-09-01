@@ -9,8 +9,18 @@ const userReducer = (state = [], action) => {
   }
 }
 
+const bookReducer = (state = [], action) => {
+  switch (action.type) {
+    case "FETCHED_BOOKS":
+      return action.payload.books
+    default:
+      return state;
+  }
+}
+
 const rootReducer = combineReducers({
   users: userReducer,
+  books: bookReducer
 });
   
   export default rootReducer;
