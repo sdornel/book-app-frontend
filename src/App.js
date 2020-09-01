@@ -33,7 +33,6 @@ const mapDispatchToProps = (dispatch) => {
 }
 
 const mapStateToProps = (state) => {
-  console.log(state.reviews)
   return {
       users: state.users,
       books: state.books,
