@@ -1,3 +1,4 @@
+const BASE_URL = 'http://localhost:3000'
 const USERS_URL = 'http://localhost:3000/api/users'
 const BOOKS_URL = 'http://localhost:3000/api/books'
 const REVIEWS_URL = 'http://localhost:3000/api/reviews'
@@ -45,6 +46,21 @@ function fetchedBooks(data){
     return {type: "FETCHED_BOOKS", payload: data}
 }
 
+function fetchingReviews(){
+    return async (dispatch) => {
+        const response = await fetch(REVIEWS_URL)
+        const body = await response.json()
+        if (response.status !== 200) {
+            throw Error(body.message) 
+        }
+        dispatch(fetchedReviews(body))
+    }
+}
+
+function fetchedReviews(body){
+    return {type: "FETCHED_REVIEWS", payload: body}
+}
+
 // do fetch request from backend to double check everything works
 
-export { fetchingUsers, fetchingBooks }
+export { fetchingUsers, fetchingBooks, fetchingReviews }
