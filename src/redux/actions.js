@@ -46,21 +46,21 @@ function fetchedBooks(data){
     return {type: "FETCHED_BOOKS", payload: data}
 }
 
-function fetchingReviews(){
+function fetchingAllReviews(){
     return async (dispatch) => {
         const response = await fetch(REVIEWS_URL)
         const body = await response.json()
         if (response.status !== 200) {
             throw Error(body.message) 
         }
-        dispatch(fetchedReviews(body))
+        dispatch(fetchedAllReviews(body))
     }
 }
 
-function fetchedReviews(body){
+function fetchedAllReviews(body){
     return {type: "FETCHED_REVIEWS", payload: body}
 }
 
 // do fetch request from backend to double check everything works
 
-export { fetchingUsers, fetchingBooks, fetchingReviews }
+export { fetchingUsers, fetchingBooks, fetchingAllReviews }
