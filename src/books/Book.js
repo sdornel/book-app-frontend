@@ -5,6 +5,7 @@ const Book = (props) => {
         <div>
             Book component
             <h3>{props.book.title}</h3>
+            <button onClick={null}>Add Review</button>
         </div>
     )
 }

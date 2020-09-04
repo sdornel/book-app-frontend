@@ -61,6 +61,12 @@ function fetchedAllReviews(body){
     return {type: "FETCHED_REVIEWS", payload: body}
 }
 
-// do fetch request from backend to double check everything works
+function creatingUser(){
 
-export { fetchingUsers, fetchingBooks, fetchingAllReviews }
+}
+
+function createdUser(){
+    
+}
+
+export { fetchingUsers, fetchingBooks, fetchingAllReviews, creatingUser }
