@@ -1,5 +1,5 @@
 import React from 'react'
-import Book from './Book'
+import Book from './BookListItem'
 import {connect} from 'react-redux'
 
 const BooksList = (props) => {
