@@ -2,7 +2,8 @@ import React from 'react'
 import BooksList from './BooksList'
 import { connect } from 'react-redux'
 
-const booksContainer = (props) => {
+const BooksContainer = (props) => {
+    console.log(props)
     return(
         <div>
             booksContainer
@@ -17,4 +18,4 @@ const booksContainer = (props) => {
 //     };
 // };
 
-export default connect(null, null)(booksContainer)
+export default connect(null, null)(BooksContainer)

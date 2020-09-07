@@ -6,6 +6,7 @@ const Book = (props) => {
         <div>
             as
             <p>Another</p>
+            <span>EUREKA!</span>
         </div>
     )
 }

@@ -3,7 +3,8 @@ import {connect} from 'react-redux'
 import { Route, Switch, withRouter } from "react-router-dom";
 import { fetchingUsers, fetchingBooks, fetchingAllReviews, creatingUser } from './redux/actions'
 import BooksContainer from './books/BooksContainer'
-import Book from './books/BooksContainer'
+import BooksList from './books/BooksList'
+import Book from './books/Book'
 import Nav from './components/Nav'
 import './App.css';
 
@@ -23,9 +24,10 @@ class App extends React.Component {
         <Nav />
         <Switch>
           {/* <Route exact path="/profile" component={UserContainer} /> */}
-          <Route path="/book/:bookId" component={Book} />
-          <Route exact path="/books" component={BooksContainer} />
+          <Route path="/books/:bookId" component={Book} />
+          <Route path="/books" component={BooksContainer} />
           {/* Home needs to come last */}
+          
       </Switch>
       </div>
     );
