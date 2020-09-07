@@ -1,10 +1,8 @@
 import React from 'react'
-import { Link, Route, useRouteMatch, Switch } from 'react-router-dom'
-import Book from './Book'
+import { Link } from 'react-router-dom'
+// import Book from './Book'
 
 const BookListItem = (props) => {
-    let { path, url } = useRouteMatch();
-    console.log()
     return (
         <div>
             Book component

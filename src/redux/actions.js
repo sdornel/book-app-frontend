@@ -1,4 +1,4 @@
-const BASE_URL = 'http://localhost:3000'
+// const BASE_URL = 'http://localhost:3000'
 const USERS_URL = 'http://localhost:3000/api/users'
 const BOOKS_URL = 'http://localhost:3000/api/books'
 const REVIEWS_URL = 'http://localhost:3000/api/reviews'

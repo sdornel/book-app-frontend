@@ -3,7 +3,6 @@ import {connect} from 'react-redux'
 import { Route, Switch, withRouter } from "react-router-dom";
 import { fetchingUsers, fetchingBooks, fetchingAllReviews, creatingUser } from './redux/actions'
 import BooksContainer from './books/BooksContainer'
-import BooksList from './books/BooksList'
 import Book from './books/Book'
 import Nav from './components/Nav'
 import './App.css';

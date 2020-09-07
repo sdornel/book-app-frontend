@@ -3,7 +3,6 @@ import BooksList from './BooksList'
 import { connect } from 'react-redux'
 
 const BooksContainer = (props) => {
-    console.log(props)
     return(
         <div>
             booksContainer
