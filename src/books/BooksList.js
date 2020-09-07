@@ -1,11 +1,11 @@
 import React from 'react'
-import Book from './BookListItem'
+import BookListItem from './BookListItem'
 import {connect} from 'react-redux'
 
 const BooksList = (props) => {
     return (
         <div>
-            {props.books.map(book => <Book book={book} key={book.id}/>)}
+            {props.books.map(book => <BookListItem book={book} key={book.id}/>)}
         </div>
     )
 }

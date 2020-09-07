@@ -1,8 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-const Book = (props) => {
-    console.log(props)
+const BookListItem = (props, ) => {
     return (
         <div>
             Book component
@@ -12,4 +11,4 @@ const Book = (props) => {
     )
 }
 
-export default Book
+export default BookListItem
