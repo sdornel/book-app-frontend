@@ -4,6 +4,9 @@ const userReducer = (state = [], action) => {
   switch (action.type) {
       case "FETCHED_USERS":
         return action.payload.users
+        case "LOGOUT_USER":
+          debugger
+          return {...state, user: null}
       default:
         return state;
   }

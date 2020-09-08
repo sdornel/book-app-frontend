@@ -30,6 +30,13 @@ class App extends React.Component {
           {/* Home needs to come last */}
           
       </Switch>
+      {
+      this.props.user ? 
+      <div>
+        <h2>Welcome {this.props.user.name}!</h2>
+      </div>
+      : null
+      }
       </div>
     );
   }

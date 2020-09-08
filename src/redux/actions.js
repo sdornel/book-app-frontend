@@ -2,7 +2,7 @@
 const USERS_URL = 'http://localhost:3000/api/users'
 const BOOKS_URL = 'http://localhost:3000/api/books'
 const REVIEWS_URL = 'http://localhost:3000/api/reviews'
-
+const LOGIN_URL = 'http://localhost:3000/api/login'
 
 
 
@@ -63,7 +63,12 @@ function fetchedAllReviews(body){
 
 function fetchingUser(email, password){
     return (dispatch) => {
-        
+        const obj = {
+            email: email,
+            password: password
+        }
+        debugger
+        // fetch(LOGIN_URL)
     }
 }
 
@@ -79,4 +84,8 @@ function createdUser(){
     
 }
 
-export { fetchingUsers, fetchingBooks, fetchingAllReviews, creatingUser, fetchingUser }
+function logoutUser(currentUser){
+    return {type: 'LOGOUT_USER', payload: currentUser}
+}
+
+export { fetchingUsers, fetchingBooks, fetchingAllReviews, creatingUser, fetchingUser, logoutUser }
