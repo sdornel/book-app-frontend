@@ -1,10 +1,11 @@
 import React from 'react';
 import {connect} from 'react-redux'
 import { Route, Switch, withRouter } from "react-router-dom";
-import { fetchingUsers, fetchingBooks, fetchingAllReviews, creatingUser } from './redux/actions'
+import { fetchingUsers, fetchingBooks, fetchingAllReviews } from './redux/actions'
 import BooksContainer from './books/BooksContainer'
 import Book from './books/Book'
 import Nav from './components/Nav'
+import Login from './components/Login'
 import './App.css';
 
 class App extends React.Component { 
@@ -25,6 +26,7 @@ class App extends React.Component {
           {/* <Route exact path="/profile" component={UserContainer} /> */}
           <Route path="/books/:bookId" component={Book} />
           <Route path="/books" component={BooksContainer} />
+          <Route path="/login" component={Login} />
           {/* Home needs to come last */}
           
       </Switch>

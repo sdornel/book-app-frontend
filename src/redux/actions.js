@@ -61,6 +61,16 @@ function fetchedAllReviews(body){
     return {type: "FETCHED_REVIEWS", payload: body}
 }
 
+function fetchingUser(email, password){
+    return (dispatch) => {
+        
+    }
+}
+
+function fetchedUser(body){
+    return {type: "FETCHED_USER", payload: body}
+}
+
 function creatingUser(){
 
 }
@@ -69,4 +79,4 @@ function createdUser(){
     
 }
 
-export { fetchingUsers, fetchingBooks, fetchingAllReviews, creatingUser }
+export { fetchingUsers, fetchingBooks, fetchingAllReviews, creatingUser, fetchingUser }
