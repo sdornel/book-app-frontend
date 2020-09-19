@@ -83,7 +83,8 @@ function loggingIn(email, password){
             //         dispatch(fetchedUser(user))
             //     }
             // })
-            debugger
+            // debugger
+            localStorage.token = user.token
             let u = user.user
             dispatch(loggedIn(u))
         })
@@ -92,6 +93,14 @@ function loggingIn(email, password){
 
 function loggedIn(body){
     return {type: "LOGGED_IN", payload: body}
+}
+
+function fetchingUser(){
+
+}
+
+function fetchedUser(){
+
 }
 
 function creatingUser(){
