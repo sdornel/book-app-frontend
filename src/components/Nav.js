@@ -16,7 +16,7 @@ class Nav extends React.Component{
                 <br/>
                 <Link to="/books">Books</Link>
                 <br />
-                { !this.props.user.email ? <Link to="/login">Login</Link> : <Link to="/" onClick={this.handleClick}>Logout</Link> }
+                { !this.props.user || this.props.user.length === 0 ? <Link to="/login">Login</Link> : <Link to="/" onClick={this.handleClick}>Logout</Link> }
             </div>
         )
     }
@@ -26,7 +26,7 @@ const mapStateToProps = (state) => {
     return {
       user: state.user,
     };
-  };
+};
 
 const mapDispatchToProps = (dispatch) => {
     return {

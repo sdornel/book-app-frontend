@@ -2,7 +2,7 @@
 const USERS_URL = 'http://localhost:3000/api/users'
 const BOOKS_URL = 'http://localhost:3000/api/books'
 const REVIEWS_URL = 'http://localhost:3000/api/reviews'
-const LOGIN_URL = 'http://localhost:3000/api/login'
+const LOGIN_URL = 'http://localhost:3000/api/sign-in'
 
 
 
@@ -17,20 +17,20 @@ const LOGIN_URL = 'http://localhost:3000/api/login'
 //     dispatch(calledBackendAPI(body))
 // };
 
-function fetchingUsers(){
-    return async (dispatch) => {
-        const response = await fetch(USERS_URL);
-        const body = await response.json();
-        if (response.status !== 200) {
-        throw Error(body.message) 
-        }
-        dispatch(fetchedUsers(body))
-    }
-}
+// function fetchingUsers(){
+//     return async (dispatch) => {
+//         const response = await fetch(USERS_URL);
+//         const body = await response.json();
+//         if (response.status !== 200) {
+//         throw Error(body.message) 
+//         }
+//         dispatch(fetchedUsers(body))
+//     }
+// }
 
-function fetchedUsers(body){
-    return {type: "FETCHED_USERS", payload: body}
-}
+// function fetchedUsers(body){
+//     return {type: "FETCHED_USERS", payload: body}
+// }
 
 function fetchingBooks(){
     return (dispatch) => {
@@ -61,19 +61,37 @@ function fetchedAllReviews(body){
     return {type: "FETCHED_REVIEWS", payload: body}
 }
 
-function fetchingUser(email, password){
+function loggingIn(email, password){
     return (dispatch) => {
         const obj = {
             email: email,
             password: password
         }
-        debugger
-        // fetch(LOGIN_URL)
+        fetch(LOGIN_URL, {
+            method: "POST",
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            },
+            body: JSON.stringify(obj)
+        }).then(resp => resp.json())
+        .then(user => {
+            // fetch(USER_URL + `/${user.id}`) // fetches user courses and purchases
+            // .then(resp => resp.json())
+            // .then(user => {
+            //     if(!user.status){
+            //         dispatch(fetchedUser(user))
+            //     }
+            // })
+            debugger
+            let u = user.user
+            dispatch(loggedIn(u))
+        })
     }
 }
 
-function fetchedUser(body){
-    return {type: "FETCHED_USER", payload: body}
+function loggedIn(body){
+    return {type: "LOGGED_IN", payload: body}
 }
 
 function creatingUser(){
@@ -88,4 +106,4 @@ function logoutUser(currentUser){
     return {type: 'LOGOUT_USER', payload: currentUser}
 }
 
-export { fetchingUsers, fetchingBooks, fetchingAllReviews, creatingUser, fetchingUser, logoutUser }
+export { fetchingBooks, fetchingAllReviews, creatingUser, loggingIn, logoutUser }

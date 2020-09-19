@@ -1,7 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux'
 import { Route, Switch, withRouter } from "react-router-dom";
-import { fetchingUsers, fetchingBooks, fetchingAllReviews } from './redux/actions'
+import { fetchingBooks, fetchingAllReviews, fetchingUser } from './redux/actions'
 import BooksContainer from './books/BooksContainer'
 import Book from './books/Book'
 import Nav from './components/Nav'
@@ -12,9 +12,10 @@ class App extends React.Component {
 
 
   componentDidMount(){
-    this.props.fetchingUsers()
+    // this.props.fetchingUsers()
     this.props.fetchingBooks()
     this.props.fetchingAllReviews()
+    // this.props.fetchingUser()
   }
 
   render() {
@@ -22,7 +23,16 @@ class App extends React.Component {
       <div className="App">
         App
         <Nav />
-        <Switch>
+
+      {
+      !this.props.user || this.props.user.length === 0 ?
+        null
+        :
+        <div>
+          <h2>Welcome {this.props.user.name}!</h2>
+        </div>
+      }
+              <Switch>
           {/* <Route exact path="/profile" component={UserContainer} /> */}
           <Route path="/books/:bookId" component={Book} />
           <Route path="/books" component={BooksContainer} />
@@ -30,32 +40,28 @@ class App extends React.Component {
           {/* Home needs to come last */}
           
       </Switch>
-      {
-      this.props.user ? 
-      <div>
-        <h2>Welcome {this.props.user.name}!</h2>
       </div>
-      : null
-      }
-      </div>
+      
     );
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    fetchingUsers: () => {dispatch( fetchingUsers() )},
+    // fetchingUsers: () => {dispatch( fetchingUsers() )},
     fetchingBooks: () => {dispatch( fetchingBooks() )},
     fetchingAllReviews: () => {dispatch( fetchingAllReviews() )},
+    // fetchingUser: () => {dispatch( fetchingUser() )},
     // creatingUser: () => {dispatch( creatingUser() )},
   }
 }
 
 const mapStateToProps = (state) => {
   return {
-      users: state.users,
+      // users: state.users,
       books: state.books,
-      reviews: state.reviews
+      reviews: state.reviews,
+      user: state.user
   };
 };
 

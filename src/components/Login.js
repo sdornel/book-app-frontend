@@ -2,7 +2,7 @@ import React from 'react'
 import { Button, Form, Segment, Message, Card, Grid, Header, Image } from "semantic-ui-react";
 import { connect } from "react-redux";
 import { withRouter, Link, Redirect } from "react-router-dom";
-import { fetchingUser } from "../redux/actions"
+import { loggingIn } from "../redux/actions"
 
 class Login extends React.Component{
     constructor(){
@@ -24,7 +24,7 @@ class Login extends React.Component{
         if(this.state.email === "" || this.state.password === ""){
             alert("email and password fields cannot be blank")
         }else{
-            this.props.fetchingUser(this.state.email, this.state.password)
+            this.props.loggingIn(this.state.email, this.state.password)
         }
     }
 
@@ -66,7 +66,7 @@ class Login extends React.Component{
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        fetchingUser: (email, password) => {dispatch( fetchingUser(email, password) )}
+        loggingIn: (email, password) => {dispatch( loggingIn(email, password) )}
     }
 }
 export default withRouter(connect(null, mapDispatchToProps)(Login));
