@@ -5,61 +5,7 @@ const REVIEWS_URL = 'http://localhost:3000/reviews'
 const LOGIN_URL = 'http://localhost:3000/login'
 const PROTECTED_URL = 'http://localhost:3000/protected'
 
-
-// callingBackendAPI = async () => {
-//     const response = await fetch('http://localhost:3000/express_backend');
-//     const body = await response.json();
-
-//     if (response.status !== 200) {
-//       throw Error(body.message) 
-//     }
-//     // return body;
-//     dispatch(calledBackendAPI(body))
-// };
-
-// function fetchingUsers(){
-//     return async (dispatch) => {
-//         const response = await fetch(USERS_URL);
-//         const body = await response.json();
-//         if (response.status !== 200) {
-//         throw Error(body.message) 
-//         }
-//         dispatch(fetchedUsers(body))
-//     }
-// }
-
-// function fetchedUsers(body){
-//     return {type: "FETCHED_USERS", payload: body}
-// }
-
-function fetchingBooks(){
-    return (dispatch) => {
-        fetch(BOOKS_URL)
-        .then(resp => resp.json())
-        .then(data => {
-            dispatch(fetchedBooks(data))
-        })
-    }
-}
-
-function fetchedBooks(data){
-    return {type: "FETCHED_BOOKS", payload: data}
-}
-
-function fetchingAllReviews(){
-    return async (dispatch) => {
-        const response = await fetch(REVIEWS_URL)
-        const body = await response.json()
-        if (response.status !== 200) {
-            throw Error(body.message) 
-        }
-        dispatch(fetchedAllReviews(body))
-    }
-}
-
-function fetchedAllReviews(body){
-    return {type: "FETCHED_REVIEWS", payload: body}
-}
+////////////////////////////// USERS ///////////////////////////////////////////////////////////////////////////
 
 function loggingIn(email, password){
     return (dispatch) => {
@@ -105,7 +51,6 @@ function gettingProfileFetch(){
             })
             .then(resp => resp.json())
             .then(user => { 
-                debugger
                 // currentUser = user
                 // currentUserId = user.id
                 if(user.message){
@@ -150,5 +95,42 @@ function createdUser(){
 function logoutUser(currentUser){
     return {type: 'LOGOUT_USER', payload: currentUser}
 }
+
+////////////////////////////// BOOKS ///////////////////////////////////////////////////////////////////////////
+
+function fetchingBooks(){
+    return (dispatch) => {
+        fetch(BOOKS_URL)
+        .then(resp => resp.json())
+        .then(data => {
+            dispatch(fetchedBooks(data))
+        })
+    }
+}
+
+function fetchedBooks(data){
+    return {type: "FETCHED_BOOKS", payload: data}
+}
+
+
+
+////////////////////////////// REVIEWS ///////////////////////////////////////////////////////////////////////////
+
+function fetchingAllReviews(){
+    return async (dispatch) => {
+        const response = await fetch(REVIEWS_URL)
+        const body = await response.json()
+        if (response.status !== 200) {
+            throw Error(body.message) 
+        }
+        dispatch(fetchedAllReviews(body))
+    }
+}
+
+function fetchedAllReviews(body){
+    return {type: "FETCHED_REVIEWS", payload: body}
+}
+
+
 
 export { fetchingBooks, fetchingAllReviews, creatingUser, loggingIn, logoutUser, gettingProfileFetch }

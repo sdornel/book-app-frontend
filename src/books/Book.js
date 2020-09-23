@@ -1,5 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import BookReview from './BookReview'
 
 const Book = (props) => {
     console.log(props)
@@ -10,23 +11,14 @@ const Book = (props) => {
             <li>{props.book.author}</li>
             <li>{props.book.pages} pages</li>
             <h3>Reviews</h3>
-            {
-                props.book.Reviews.map(r => {
-                    return (
-                        <div>
-                            <li>{r.stars}</li>
-                            {/* TODO: create actual stars dependent on r.stars number */}
-                            <li>{r.text}</li>
-                        </div>
-                    )
-                })
-            }
+                {props.book.Reviews.map(r => <BookReview review={r} key={r.id}/> )}
+                {/* {props.books.map(book => <BookListItem book={book} key={book.id}/>)} */}
             {/* {props.book.Reviews[0].text} */}
         </div>
     )
 }
 
-const mapStateToProps = (state, ownProps) => {
+const mapStateToProps = (state, ownProps) => { // delete?
     console.log(ownProps)
     return {
         book: state.books.find(b => {

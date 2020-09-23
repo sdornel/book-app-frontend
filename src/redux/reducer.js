@@ -5,20 +5,18 @@ const userReducer = (state = [], action) => {
       // case "FETCHED_USERS":
       //   return action.payload.users
       case "LOGGED_IN":
-        // debugger
         if(action.payload === undefined){
           return null
         }else{
           return action.payload
         }
       case "GOT_PROFILE_FETCH":
-        debugger
         return action.payload
       case "LOGOUT_USER":
-        debugger
-        // state = null
-        // return state
-        return {...state, user: null}
+        state = null
+        return state
+        // debugger
+        // return {...state, user: null}
       default:
         return state;
   }
