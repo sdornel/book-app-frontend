@@ -1,7 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux'
 import { Route, Switch, withRouter } from "react-router-dom";
-import { fetchingBooks, fetchingAllReviews, fetchingUser } from './redux/actions'
+import { gettingProfileFetch, fetchingBooks, fetchingAllReviews, fetchingUser } from './redux/actions'
 import BooksContainer from './books/BooksContainer'
 import Book from './books/Book'
 import Nav from './components/Nav'
@@ -16,6 +16,7 @@ class App extends React.Component {
     this.props.fetchingBooks()
     this.props.fetchingAllReviews()
     // this.props.fetchingUser()
+    this.props.gettingProfileFetch()
   }
 
   render() {
@@ -53,6 +54,7 @@ const mapDispatchToProps = (dispatch) => {
     fetchingAllReviews: () => {dispatch( fetchingAllReviews() )},
     // fetchingUser: () => {dispatch( fetchingUser() )},
     // creatingUser: () => {dispatch( creatingUser() )},
+    gettingProfileFetch: () => {dispatch( gettingProfileFetch() )}
   }
 }
 

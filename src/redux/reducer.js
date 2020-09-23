@@ -2,15 +2,22 @@ import { combineReducers } from "redux";
 
 const userReducer = (state = [], action) => {
   switch (action.type) {
-      case "FETCHED_USERS":
-        return action.payload.users
+      // case "FETCHED_USERS":
+      //   return action.payload.users
       case "LOGGED_IN":
+        // debugger
+        if(action.payload === undefined){
+          return null
+        }else{
+          return action.payload
+        }
+      case "GOT_PROFILE_FETCH":
         debugger
         return action.payload
       case "LOGOUT_USER":
         debugger
-        state = null
-        return state
+        // state = null
+        // return state
         return {...state, user: null}
       default:
         return state;
@@ -36,7 +43,7 @@ const reviewsReducer = (state = [], action) => {
 }
 
 const rootReducer = combineReducers({
-  users: userReducer,
+  // users: usersReducer,
   books: bookReducer,
   reviews: reviewsReducer,
   user: userReducer
